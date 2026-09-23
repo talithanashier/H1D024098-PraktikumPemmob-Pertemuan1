@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.pemmob.tita.ui.screen.BasicInfoScreen
+import com.pemmob.tita.ui.screen.DaftarProductScreen
 import com.pemmob.tita.ui.screen.HubungiKamiScreen
 import com.pemmob.tita.ui.theme.JualanTheme
 
@@ -20,15 +21,19 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
 
         setContent {
             JualanTheme {
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
                     AppNavigation()
+
                 }
             }
         }
@@ -42,7 +47,7 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = "basic_info"
+        startDestination = "products"
     ) {
 
         composable("basic_info") {
@@ -55,6 +60,10 @@ fun AppNavigation() {
             HubungiKamiScreen(
                 navController = navController
             )
+        }
+
+        composable("products") {
+            DaftarProductScreen()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.pemmob.tita.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -15,6 +16,9 @@ private val DarkColorScheme = darkColorScheme(
     onTertiary = Color.White,
     background = Color(0xFF121212),
     surface = Color(0xFF1E1E1E),
+    surfaceVariant = Color(0xFF2C2C2C),
+    surfaceTint = Color(0xFF1E1E1E),
+    onSurfaceVariant = Color.White,
     onBackground = Color.White,
     onSurface = Color.White
 )
@@ -28,13 +32,16 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     background = Background,
     surface = Surface,
+    surfaceVariant = Color(0xFFE8E8E8),
+    surfaceTint = Color.White,
+    onSurfaceVariant = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black
 )
 
 @Composable
 fun JualanTheme(
-    darkTheme: Boolean = false,
+    darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
