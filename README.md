@@ -11,4 +11,4 @@ Tampilan Aplikasi-Pertemuan 2
 <img width="776" height="1600" alt="image" src="https://github.com/user-attachments/assets/71caa325-6549-475d-81de-6898acbad7cb" />
 
 Tampilan Aplikasi-Pertemuan 3
-https://github.com/talithanashier/H1D024098-PraktikumPemmob-Pertemuan1/issues/1
+https://github.com/user-attachments/assets/52c69e10-6fbd-4617-af09-738eab7d6eb0
