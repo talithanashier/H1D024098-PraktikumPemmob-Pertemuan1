@@ -9,11 +9,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.pemmob.tita.ui.screen.BasicInfoScreen
+import androidx.navigation.navArgument
 import com.pemmob.tita.ui.screen.DaftarProductScreen
+import com.pemmob.tita.ui.screen.DetailProductScreen
 import com.pemmob.tita.ui.screen.HubungiKamiScreen
 import com.pemmob.tita.ui.theme.JualanTheme
 
@@ -26,14 +28,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             JualanTheme {
-
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     AppNavigation()
-
                 }
             }
         }
@@ -42,28 +41,37 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavigation() {
-
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = "products"
+        startDestination = "daftar_produk"
     ) {
-
-        composable("basic_info") {
-            BasicInfoScreen(
+        composable(route = "daftar_produk") {
+            DaftarProductScreen(
                 navController = navController
             )
         }
 
-        composable("form_screen") {
+        composable(
+            route = "detail/{productId}",
+            arguments = listOf(
+                navArgument(name = "productId") {
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getInt("productId") ?: 0
+            DetailProductScreen(
+                productId = productId,
+                navController = navController
+            )
+        }
+
+        composable(route = "hubungi_kami") {
             HubungiKamiScreen(
                 navController = navController
             )
-        }
-
-        composable("products") {
-            DaftarProductScreen()
         }
     }
 }
